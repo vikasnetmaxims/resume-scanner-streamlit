@@ -28,8 +28,7 @@ def main():
                     llm=st.session_state.llm,
                     llm_creative=st.session_state.llm_creative,
                     documents=st.session_state.documents,
-                    job_description=st.session_state.job_description,  # Pass job description
-                    additional_prompts=st.session_state.additional_prompts  # Pass additional prompts
+                    job_description=st.session_state.job_description,   
                 )
 
                 # 5. Display results
@@ -61,13 +60,6 @@ if __name__ == "__main__":
         label="**Job Description**",
         placeholder="Enter the job description here..."
     )
-
-    # # 6. Additional prompts input
-    st.session_state.additional_prompts = st.text_area(
-        label="**Additional Prompts**",
-        placeholder="Enter any additional prompts or context here..."
-    )
-
 
     # 7. Analyze the uploaded resume
     main()

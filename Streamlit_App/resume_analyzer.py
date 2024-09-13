@@ -1075,7 +1075,7 @@ def get_section_scores(SCANNED_RESUME):
 ###############################################################################
 
 
-def resume_analyzer_main(llm, llm_creative, documents, job_description, additional_prompts):
+def resume_analyzer_main(llm, llm_creative, documents, job_description):
     """Put it all together: Extract, evaluate and improve all resume sections.
     Save the final results in a dictionary.
     """
