@@ -279,7 +279,7 @@ def Extract_contact_information(llm, documents):
     return CONTACT_INFORMATION
 
 
-def Extract_Evaluate_Summary(llm, documents):
+def Extract_Evaluate_Summary(llm, documents, job_description):
     """Extract, evaluate and strengthen the summary."""
 
     ######################################
@@ -291,7 +291,7 @@ def Extract_Evaluate_Summary(llm, documents):
             documents,
             resume_sections=["CV__summary"],
             info_message="Extract and evaluate the Summary....",
-            language=st.session_state.assistant_language,
+            language=st.session_state.assistant_language
         )
         try:
             # Load response_content to json dictionary
@@ -323,6 +323,7 @@ def Extract_Evaluate_Summary(llm, documents):
             resume=documents,
             language=st.session_state.assistant_language,
             summary=SUMMARY_SECTION["CV__summary"],
+            job_description=job_description
         ).text
 
         # Invoke LLM
@@ -387,7 +388,7 @@ def Extract_Education_Language(llm, documents):
                 "Languages__evaluation",
             ],
             info_message="Extract and evaluate education and language sections...",
-            language=st.session_state.assistant_language,
+            language=st.session_state.assistant_language
         )
 
         try:
@@ -1079,11 +1080,12 @@ def resume_analyzer_main(llm, llm_creative, documents, job_description):
     """Put it all together: Extract, evaluate and improve all resume sections.
     Save the final results in a dictionary.
     """
+
     # 1. Extract Contact information: Name, Title, Location, Email,...
     CONTACT_INFORMATION = Extract_contact_information(llm, documents)
 
     # 2. Extract, evaluate and improve the Summary
-    Summary_SECTION = Extract_Evaluate_Summary(llm, documents)
+    Summary_SECTION = Extract_Evaluate_Summary(llm, documents, job_description)
 
     # 3. Extract and evaluate education and language sections.
     Education_Language_sections = Extract_Education_Language(llm, documents)

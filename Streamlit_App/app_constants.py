@@ -166,7 +166,7 @@ templates[
 PROMPT_IMPROVE_SUMMARY = """Your are given a resume (delimited by <resume></resume>) \
 and a summary (delimited by <summary></summary>).
 1. In {language}, evaluate the summary (format and content) .
-2. Rate the summary by giving an integer score from 0 to 100. \
+2. Rate the summary by giving an integer score from 0 to 100 as per according to the {job_description}. \
 If the summary is "unknown", the score is 0.
 3. In {language}, strengthen the summary. The summary should not exceed 5 sentences. \
 If the summary is "unknown", generate a strong summary in {language} with no more than 5 sentences. \
