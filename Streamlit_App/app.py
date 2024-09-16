@@ -46,7 +46,14 @@ if __name__ == "__main__":
     openai_api_key, google_api_key, cohere_api_key = get_api_keys_from_local_env()
 
     # 3. Create the sidebar
-    sidebar(openai_api_key, google_api_key, cohere_api_key)
+    # sidebar(openai_api_key, google_api_key, cohere_api_key)
+    st.session_state.cohere_api_key=cohere_api_key
+    st.session_state.assistant_language="english"
+    st.session_state.LLM_provider="Google"
+    st.session_state.google_api_key=google_api_key
+    st.session_state.selected_model="gemini-pro"
+    st.session_state.temperature=0.7
+    st.session_state.top_p=0.95
 
     # 4. File uploader widget
     st.session_state.uploaded_file = st.file_uploader(
